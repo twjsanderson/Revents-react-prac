@@ -4,6 +4,11 @@ import './index.css';
 import App from './app/layout/App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { configureStore } from './app/store/configureStore';
+
+const store = configureStore();
+
 
 
 // The following code gives us hot reload that does not re-render the entire application
@@ -12,9 +17,11 @@ const rootEl = document.getElementById('root');
 
 let render = () => {
     ReactDOM.render(
-    <BrowserRouter>
-        <App/>
-    </BrowserRouter>, 
+    <Provider store={store}>
+        <BrowserRouter>
+            <App/>
+        </BrowserRouter>
+    </Provider>, 
     rootEl)
 }
 
