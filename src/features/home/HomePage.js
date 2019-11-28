@@ -8,6 +8,9 @@ import {
   Icon
 } from 'semantic-ui-react';
 
+// React router creates a history object for us to access
+// we can use the history object and history push function to redirect to a new page
+
 const HomePage = ({history}) => {
   return (
     <Segment inverted textAlign='center' vertical className='masthead'>

@@ -10,20 +10,30 @@ import UserDetailedPage from '../../features/user/UserDetailed/UserDetailedPage'
 import SettingsDashboard from '../../features/user/Settings/SettingsDashboard';
 import EventForm from '../../features/event/EventForm/EventForm';
 
+
+// path='/(.+)' if the path matches '/' plus one of the following routes, then render than route
+
 class App extends Component {
   render() {
     return (
       <>
-      <NavBar />
-      <Container className='main'>
         <Route exact path='/' component={HomePage} />
-        <Route path='/events' component={EventDashboard} />
-        <Route path='/events/:id' component={EventDetailedPage} />
-        <Route path='/people' component={PeopleDashboard} />
-        <Route path='/profile/:id' component={UserDetailedPage} />
-        <Route path='/settings' component={SettingsDashboard} />
-        <Route path='/createEvent' component={EventForm} />
-      </Container>
+        <Route 
+          path='/(.+)'
+          render={() => (
+            <>
+              <NavBar />
+              <Container className='main'>
+                <Route path='/events' component={EventDashboard} />
+                <Route path='/events/:id' component={EventDetailedPage} />
+                <Route path='/people' component={PeopleDashboard} />
+                <Route path='/profile/:id' component={UserDetailedPage} />
+                <Route path='/settings' component={SettingsDashboard} />
+                <Route path='/createEvent' component={EventForm} />
+              </Container>
+            </>
+          )}
+        />
       </>
     );
   }
