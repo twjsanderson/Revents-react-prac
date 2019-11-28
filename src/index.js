@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './app/layout/App';
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter } from 'react-router-dom';
 
 
 // The following code gives us hot reload that does not re-render the entire application
@@ -10,7 +11,11 @@ import * as serviceWorker from './serviceWorker';
 const rootEl = document.getElementById('root');
 
 let render = () => {
-    ReactDOM.render(<App/>, rootEl)
+    ReactDOM.render(
+    <BrowserRouter>
+        <App/>
+    </BrowserRouter>, 
+    rootEl)
 }
 
 if (module.hot) {
