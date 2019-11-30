@@ -1,35 +1,36 @@
+ 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import './index.css';
 import App from './app/layout/App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
 import { configureStore } from './app/store/configureStore';
+import ScrollToTop from './app/common/util/ScrollToTop';
 
 const store = configureStore();
 
-
-
-// The following code gives us hot reload that does not re-render the entire application
-// we access and modiify webpack below at module
 const rootEl = document.getElementById('root');
 
 let render = () => {
-    ReactDOM.render(
+  ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter>
-            <App/>
-        </BrowserRouter>
-    </Provider>, 
-    rootEl)
-}
+      <BrowserRouter>
+        <ScrollToTop>
+          <App />
+        </ScrollToTop>
+      </BrowserRouter>
+    </Provider>,
+    rootEl
+  );
+};
 
 if (module.hot) {
-    module.hot.accept(App, () => {
-        setTimeout(render);
-    });
-};
+  module.hot.accept('./app/layout/App', () => {
+    setTimeout(render);
+  });
+}
 
 render();
 
