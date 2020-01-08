@@ -32,6 +32,7 @@ class App extends Component {
                   <Route path='/profile/:id' component={UserDetailedPage} />
                   <Route path='/settings' component={SettingsDashboard} />
                   <Route
+                    // both routes lead to the same component
                     path={['/createEvent', '/manage/:id']}
                     component={EventForm}
                   />

@@ -56,8 +56,10 @@ class EventForm extends Component {
                 <Segment>
                     <Header sub color='teal' content='Event details' />
                     <Form
-                    onSubmit={this.props.handleSubmit(this.onFormSubmit)}
-                    autoComplete='off'
+                        // this.props.handleSubmit is a function given to us by redux-forms that can take 1) an event OR 2) a handle submit function that we create 
+                        // We are passing in our own onFormSubmit function as parameter because we require more complex submission logic
+                        onSubmit={this.props.handleSubmit(this.onFormSubmit)}
+                        autoComplete='off'
                     >
                     <Field
                         name='title'
@@ -99,6 +101,9 @@ class EventForm extends Component {
                         Submit
                     </Button>
                     <Button
+                    // if we use this.props.history.goBack that sends us to the last page in our browser
+                    // history, so if we came from another website and pressed cancel with this implemented
+                    // it would send us to that page NOT the /events route
                         onClick={
                         initialValues.id
                             ? () => history.push(`/events/${initialValues.id}`)

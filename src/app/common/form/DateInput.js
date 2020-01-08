@@ -3,11 +3,11 @@ import { Form, Label } from 'semantic-ui-react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const DateInput = ({input, width, placeholder, meta: {touched, error}, ...rest}) => {
+const DateInput = ({input, width, placeholder, meta: {touched, error}, ...additionalProperties}) => {
     return (
         <Form.Field error={touched && !!error}>
             <DatePicker 
-                {...rest}
+                {...additionalProperties}
                 placeholderText={placeholder}
                 selected={input.value ? new Date(input.value) : null}
                 onChange={input.onChange}

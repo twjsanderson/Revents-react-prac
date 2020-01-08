@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Grid } from 'semantic-ui-react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import EventList from '../EventList/EventList';
-import {createEvent, updateEvent, deleteEvent} from '../eventActions';
+import { createEvent, updateEvent, deleteEvent } from '../eventActions';
 
   class EventDashboard extends Component {
     handleDeleteEvent = id => {
@@ -10,7 +10,7 @@ import {createEvent, updateEvent, deleteEvent} from '../eventActions';
     };
 
     render() {
-      const {events} = this.props;
+      const { events } = this.props;
         return (
             <Grid>
                 <Grid.Column width={10}>
@@ -27,8 +27,9 @@ import {createEvent, updateEvent, deleteEvent} from '../eventActions';
     }
   }
 
-  const mapStateToProps = (state) => ({
-    events: state.events
+  const mapStateToProps = (state, ownProps) => ({
+    events: state.events,
+    ownProps: ownProps
   });
 
   const mapDispatchToProps = {
