@@ -1,9 +1,7 @@
-//this 
+export const createReducer = (initialState, fnMap) => {
+    return (state = initialState, {type, payload}) => {
+        const handler = fnMap[type];
 
-export const createReducer = (initialState, functionMap) => {
-    return ( state = initialState , {type, payload}) => {
-        const handler = functionMap[type];
-
-        return handler ? handler(state, payload) : state;
-    }
+        return handler ? handler(state, payload) : state
+    } 
 }
