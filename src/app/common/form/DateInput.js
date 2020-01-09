@@ -5,6 +5,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 const DateInput = ({input, width, placeholder, meta: {touched, error}, ...rest}) => {
     return (
+        // onBlur lets redux-forms know if we have clicked into or out of the field
+        // onChangeRaw prevents user from typing into the field, which throws an error in the console
         <Form.Field error={touched && !!error}>
             <DatePicker 
                 {...rest}

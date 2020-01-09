@@ -9,6 +9,7 @@ import TextInput from '../../../app/common/form/TextInput';
 import TextArea from '../../../app/common/form/TextArea';
 import SelectInput from '../../../app/common/form/SelectInput';
 import DateInput from '../../../app/common/form/DateInput';
+import PlaceInput from '../../../app/common/form/PlaceInput';
 
 const validate = combineValidators({
     title: isRequired({message: 'The event title is required'}),
@@ -81,20 +82,22 @@ class EventForm extends Component {
                     <Header sub color='teal' content='Event location details' />
                     <Field
                         name='city'
-                        component={TextInput}
+                        component={PlaceInput}
                         placeholder='Event city'
                     />
                     <Field
                         name='venue'
-                        component={TextInput}
+                        component={PlaceInput}
                         placeholder='Event venue'
                     />
                     <Field
                         name='date'
                         component={DateInput}
+                        // these properties are passed in and used as { rest } in the DateInput component
                         dateFormat='dd LLL yyyy h:mm a'
                         placeholder='Event date'
                         showTimeSelect
+                        // this timeFormat is 24 hr versus standard time
                         timeFormat='HH:mm'  
                     />
                     <Button disabled={invalid || submitting || pristine} positive type='submit'>

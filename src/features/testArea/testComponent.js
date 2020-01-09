@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {incrementCounter, decrementCounter} from './testActions';
 import { Button } from 'semantic-ui-react';
+import TestPlaceInput from './testPlaceInput';
 
 class TestComponent extends Component {
     render() {
@@ -12,6 +13,9 @@ class TestComponent extends Component {
                 <h3>State: {data}</h3>
                 <Button onClick={() => incrementCounter()}>Increment</Button>
                 <Button onClick={() => decrementCounter()}>Decrement</Button>
+                <br />
+                <br />
+                <TestPlaceInput />
             </>
         )
     }
