@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Segment, Button } from 'semantic-ui-react';
 import { reduxForm, Field } from 'redux-form';
 import TextInput from '../../../app/common/form/TextInput';
-import { login } from '../../auth/authActions';
+import { login } from '../authActions';
 import { connect } from 'react-redux';
 
 const actions = {
