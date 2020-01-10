@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { incrementCounter, decrementCounter } from './testActions';
+import { incrementAsync, decrementAsync } from './testActions';
 import { Button } from 'semantic-ui-react';
 import TestPlaceInput from './testPlaceInput';
 import SimpleMap from './SimpleGoogleMap';
@@ -27,13 +27,27 @@ class TestComponent extends Component {
       };
 
     render() {
-      const { data, incrementCounter, decrementCounter, openModal } = this.props;
+      const { data, incrementAsync, decrementAsync, openModal, loading, buttonName } = this.props;
         return (
             <>
                 <h1>Test</h1>
                 <h3>State: {data}</h3>
-                <Button onClick={() => incrementCounter()}>Increment</Button>
-                <Button onClick={() => decrementCounter()}>Decrement</Button>
+                <Button 
+                  name='increment' 
+                  loading={buttonName === 'increment' && loading} 
+                  onClick={(e) => incrementAsync(e.target.name)} 
+                  color='red'
+                >
+                  Increment
+                </Button>
+                <Button 
+                  name='decrement' 
+                  loading={buttonName === 'decrement' && loading} 
+                  onClick={(e) => decrementAsync(e.target.name)} 
+                  color='yellow'
+                >
+                  Decrement
+                </Button>
                 <Button onClick={() => openModal('TestModal', {data: 42})} color='teal' content='Open Modal' />
                 <br />
                 <br />
@@ -45,14 +59,16 @@ class TestComponent extends Component {
 }
 
 const actions = {
-  incrementCounter,
-  decrementCounter,
+  incrementAsync,
+  decrementAsync,
   openModal
 };
 
 // this pulls FROM the store and can be used as props in our application
 const mapStateToProps = (state) => ({
-    data: state.test.data
+    data: state.test.data,
+    loading: state.async.loading,
+    buttonName: state.async.elementName
 });
 
 export default connect(mapStateToProps, actions)(TestComponent);
