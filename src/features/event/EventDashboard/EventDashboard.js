@@ -5,6 +5,7 @@ import EventList from '../EventList/EventList';
 import { createEvent, updateEvent, deleteEvent } from '../eventActions';
 import LoadingComponent from '../../../app/layout/LoadingComponent';
 import EventActivity from '../EventActivity/EventActivity';
+import { firestoreConnect } from 'react-redux-firebase';
 
   class EventDashboard extends Component {
     handleDeleteEvent = id => {
@@ -38,7 +39,7 @@ import EventActivity from '../EventActivity/EventActivity';
   }
 
   const mapStateToProps = (state) => ({
-    events: state.events,
+    events: state.firestore.ordered.events,
     loading: state.async.loading
   });
 
@@ -48,4 +49,4 @@ import EventActivity from '../EventActivity/EventActivity';
     deleteEvent
   }
 
-  export default connect(mapStateToProps, mapDispatchToProps)(EventDashboard);
+  export default connect(mapStateToProps, mapDispatchToProps)(firestoreConnect([{ collection: 'events'}])(EventDashboard));

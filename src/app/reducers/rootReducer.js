@@ -6,11 +6,15 @@ import eventReducer from "../../features/event/eventReducer";
 import modalReducer from "../../features/modals/modalReducer";
 import authReducer from "../../features/auth/authReducer";
 import asyncReducer from "../../features/async/asyncReducer";
+import { firebaseReducer } from "react-redux-firebase";
+import { firestoreReducer } from 'redux-firestore';
 
-// react-redux-toastr comes with pre-made reducer called "reducer" 
-// so we rename it and add it straight to rootReducer
+// react-redux-toastr, react-redux-firebase and redux-firestore comes with pre-made reducers
+// so we rename the toastr reducer and add it straight to rootReducer
 
 const rootReducer = combineReducers({
+    firebase: firebaseReducer,
+    firestore: firestoreReducer,
     form: FormReducer,
     test: testReducer,
     events: eventReducer,

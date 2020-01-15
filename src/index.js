@@ -11,10 +11,12 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import { configureStore } from './app/store/configureStore';
 import ScrollToTop from './app/common/util/ScrollToTop';
-import { loadEvents } from './features/event/eventActions';
+// import { loadEvents } from './features/event/eventActions';
 
 const store = configureStore();
-store.dispatch(loadEvents())
+// store.dispatch(loadEvents()) remove this for firestore 
+
+
 
 const rootEl = document.getElementById('root');
 
