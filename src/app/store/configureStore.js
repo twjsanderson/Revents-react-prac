@@ -10,7 +10,8 @@ import firebase from '../config/firebase';
 const rrfConfig = {
     useProfile: 'users',
     attachAuthIsReady: true,
-    useFireStoreForProfile: true
+    useFirestoreForProfile: true,
+    updateProfileOnLogin: false
 }
 
 // the withExtraArgument() function allows us to use more than dispatch and getState 
